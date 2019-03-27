@@ -120,7 +120,8 @@ PRODUCT_PACKAGES += \
     SettingsOverlay \
     SettingsProviderOverlaySweet \
     SystemUIOverlaySweet \
-    TelephonyOverlaySweet
+    TelephonyOverlaySweet \
+    NotchBarKiller
 
 # Permissions
 PRODUCT_COPY_FILES += \
