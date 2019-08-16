@@ -68,7 +68,8 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.sweet.rc \
-    init.target.rc
+    init.target.rc \
+	init.xiaomi_parts.rc 
 
 PRODUCT_PACKAGES += \
     init.class_main.sh \
