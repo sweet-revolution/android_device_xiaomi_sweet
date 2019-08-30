@@ -16,6 +16,8 @@
 
 package org.lineageos.settings.device;
 
+import android.media.AudioManager;
+
 final class DiracUtils {
 
     private final DiracSound mDiracSound;
@@ -45,5 +47,17 @@ final class DiracUtils {
 
     void setHeadsetType(int paramInt) {
         mDiracSound.setHeadsetType(paramInt);
+    }
+
+
+    boolean getHifiMode() {
+        AudioManager audioManager = mContext.getSystemService(AudioManager.class);
+        return audioManager.getParameters("hifi_mode").contains("true");
+    }
+
+     void setHifiMode(int paramInt) {
+        AudioManager audioManager = mContext.getSystemService(AudioManager.class);
+        audioManager.setParameters("hifi_mode=" + (paramInt == 1 ? true : false));
+        mDiracSound.setHifiMode(paramInt);
     }
 }

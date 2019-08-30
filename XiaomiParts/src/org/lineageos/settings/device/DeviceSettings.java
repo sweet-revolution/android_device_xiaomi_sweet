@@ -22,6 +22,7 @@ import android.os.Bundle;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
+import androidx.preference.SwitchPreference;
 
 import org.lineageos.settings.device.kcal.KCalSettingsActivity;
 import org.lineageos.settings.device.preferences.CustomSeekBarPreference;
@@ -37,6 +38,7 @@ public class DeviceSettings extends PreferenceFragment implements
 
     private static final String PREF_ENABLE_DIRAC = "dirac_enabled";
     private static final String PREF_HEADSET = "dirac_headset_pref";
+    private static final String PREF_HIFI = "dirac_hifi_pref";
     private static final String PREF_PRESET = "dirac_preset_pref";
 
     private static final String CATEGORY_DISPLAY = "display";
@@ -55,30 +57,39 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String PREF_VIBRATION_STRENGTH = "vibration_strength";
     public static final String VIBRATION_STRENGTH_PATH = "/sys/class/leds/vibrator/vtg_level";
 
-    // value of vtg_min and vtg_max
+    // value of vtg_min and vtg_maxmPreset
     public static final int MIN_VIBRATION = 1504;
     public static final int MAX_VIBRATION = 3544;
 
     private Preference mClearSpeakerPref;
     private SecureSettingSwitchPreference mFastcharge;
-
-    @Override
+    private SwitchPreference mHifi;
+    
+     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.preferences_xiaomi_parts, rootKey);
+        addPreferencesFromResource(R.xml.dirac_settings);
 
-        boolean enhancerEnabled;
-        try {
-            enhancerEnabled = DiracService.sDiracUtils.isDiracEnabled();
-        } catch (java.lang.NullPointerException e) {
-            getContext().startService(new Intent(getContext(), DiracService.class));
-            try {
-                enhancerEnabled = DiracService.sDiracUtils.isDiracEnabled();
-            } catch (NullPointerException ne) {
-                // Avoid crash
-                ne.printStackTrace();
-                enhancerEnabled = false;
-            }
-        }
+        DiracUtils.initialize(getActivity());
+        boolean enhancerEnabled = DiracUtils.isDiracEnabled();
+
+        mSwitchBar = (MainSwitchPreference) findPreference(PREF_ENABLE);
+        mSwitchBar.addOnSwitchChangeListener(this);
+        mSwitchBar.setChecked(enhancerEnabled);
+
+        mHeadsetType = (ListPreference) findPreference(PREF_HEADSET);
+        mHeadsetType.setOnPreferenceChangeListener(this);
+
+        mPreset = (ListPreference) findPreference(PREF_PRESET);
+        mPreset.setOnPreferenceChangeListener(this);
+
+        mHifi = (SwitchPreference) findPreference(PREF_HIFI);
+        mHifi.setOnPreferenceChangeListener(this);
+
+        boolean hifiEnable = DiracUtils.getHifiMode();
+        mHeadsetType.setEnabled(!hifiEnable && enhancerEnabled);
+        mPreset.setEnabled(!hifiEnable && enhancerEnabled);
+        mHifi.setEnabled(enhancerEnabled);
+    }
 
         SecureSettingSwitchPreference enableDirac = (SecureSettingSwitchPreference) findPreference(PREF_ENABLE_DIRAC);
         enableDirac.setOnPreferenceChangeListener(this);
@@ -124,37 +135,40 @@ public class DeviceSettings extends PreferenceFragment implements
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object value) {
-        final String key = preference.getKey();
-        switch (key) {
-
-            case PREF_ENABLE_DIRAC:
-                try {
-                    DiracService.sDiracUtils.setEnabled((boolean) value);
-                } catch (java.lang.NullPointerException e) {
-                    getContext().startService(new Intent(getContext(), DiracService.class));
-                    DiracService.sDiracUtils.setEnabled((boolean) value);
-                }
-                break;
-
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        switch (preference.getKey()) {
             case PREF_HEADSET:
-                try {
-                    DiracService.sDiracUtils.setHeadsetType(Integer.parseInt(value.toString()));
-                } catch (java.lang.NullPointerException e) {
-                    getContext().startService(new Intent(getContext(), DiracService.class));
-                    DiracService.sDiracUtils.setHeadsetType(Integer.parseInt(value.toString()));
+                DiracUtils.setHeadsetType(Integer.parseInt(newValue.toString()));
+                return true;
+            case PREF_HIFI:
+                DiracUtils.setHifiMode((Boolean) newValue ? 1 : 0);
+                if (DiracUtils.isDiracEnabled()) {
+                    mHeadsetType.setEnabled(!(Boolean) newValue);
+                    mPreset.setEnabled(!(Boolean) newValue);
                 }
-                break;
-
+                return true;
             case PREF_PRESET:
-                try {
-                    DiracService.sDiracUtils.setLevel(String.valueOf(value));
-                } catch (java.lang.NullPointerException e) {
-                    getContext().startService(new Intent(getContext(), DiracService.class));
-                    DiracService.sDiracUtils.setLevel(String.valueOf(value));
-                }
-                break;
+                DiracUtils.setLevel((String) newValue);
+                return true;
+            default:
+                return false;
+        }
+    }
+    
+    @Override
+    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+        mSwitchBar.setChecked(isChecked);
 
+        DiracUtils.setMusic(isChecked);
+        mHifi.setEnabled(isChecked);
+        mHeadsetType.setEnabled(isChecked);
+        mPreset.setEnabled(isChecked);
+
+        if (!isChecked){
+            mHifi.setChecked(false);
+            DiracUtils.setHifiMode(0);
+        }
+    }
             case PREF_VIBRATION_STRENGTH:
                 double vibrationValue = (int) value / 100.0 * (MAX_VIBRATION - MIN_VIBRATION) + MIN_VIBRATION;
                 FileUtils.setValue(VIBRATION_STRENGTH_PATH, vibrationValue);
