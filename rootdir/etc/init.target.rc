@@ -152,6 +152,18 @@ on boot
     setprop persist.vendor.cp.support_qc3p5 0
     write /sys/block/sda/queue/wbt_lat_usec 75000
 
+    # Boot time fs tuning
+    write /sys/block/sda/queue/iostats 0
+    write /sys/block/sda/queue/scheduler cfq
+    write /sys/block/sda/queue/iosched/slice_idle 0
+    write /sys/block/sda/queue/read_ahead_kb 2048
+    write /sys/block/sda/queue/nr_requests 256
+    write /sys/block/sde/queue/iostats 0
+    write /sys/block/sde/queue/scheduler cfq
+    write /sys/block/sde/queue/iosched/slice_idle 0
+    write /sys/block/sde/queue/read_ahead_kb 2048
+    write /sys/block/sde/queue/nr_requests 256
+	
 # Add a cpuset for the camera daemon
 # We want all cores for camera
     mkdir /dev/cpuset/camera-daemon
@@ -194,6 +206,14 @@ on boot
     # Disable serial console
     setprop init.svc.console stopped
 
+    # Runtime fs tuning
+    write /sys/block/sda/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/nr_requests 128
+    write /sys/block/sda/queue/iostats 1
+    write /sys/block/sde/queue/read_ahead_kb 128
+    write /sys/block/sde/queue/nr_requests 128
+    write /sys/block/sde/queue/iostats 1
+	
 #pd-mapper
 service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
