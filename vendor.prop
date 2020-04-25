@@ -268,6 +268,10 @@ persist.vendor.qcom.bluetooth.scram.enabled=true
 persist.vendor.qcom.bluetooth.aac_vbr_ctl.enabled=false
 persist.demo.hdmirotationlock=false
 persist.sys.sf.color_saturation=1.0
+
+# Dalvik dex2oat
+dalvik.vm.dex2oat64.enabled=true
+
 debug.sf.hw=0
 debug.egl.hw=0
 debug.mdpcomp.logs=0
