@@ -120,6 +120,13 @@
     <string name="fastcharge_title">Enable USB Fastcharge</string>
     <string name="fastcharge_summary">Charge upto 900mA when connected to a computer via USB 3.0 port</string>
 
+    <!-- Boost Category -->
+    <string name="boost_category">Boost</string>
+
+    <!-- Touchboost -->
+    <string name="touchboost_title">Enable Touchboost</string> 
+    <string name="touchboost_summary">Boost CPU when touch detected for smooth experience</string>
+	
     <!-- Vibration -->
     <string name="vibration_title">Vibration Control</string>
     <string name="vibration_strength_title">Strength</string>

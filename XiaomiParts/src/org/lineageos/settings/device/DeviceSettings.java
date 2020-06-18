@@ -55,17 +55,29 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String PREF_VIBRATION_STRENGTH = "vibration_strength";
     public static final String VIBRATION_STRENGTH_PATH = "/sys/class/leds/vibrator/vtg_level";
 
+    public static final String PREF_MSM_TOUCHBOOST = "touchboost";
+    public static final String MSM_TOUCHBOOST_PATH = "/sys/module/msm_performance/parameters/touchboost";
+	
     // value of vtg_min and vtg_max
     public static final int MIN_VIBRATION = 1504;
     public static final int MAX_VIBRATION = 3544;
 
     private Preference mClearSpeakerPref;
     private SecureSettingSwitchPreference mFastcharge;
+	private SecureSettingSwitchPreference mTouchboost;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences_xiaomi_parts, rootKey);
 
+        if (FileUtils.fileWritable(MSM_TOUCHBOOST_PATH)) {
+            mTouchboost = (SecureSettingSwitchPreference) findPreference(PREF_MSM_TOUCHBOOST);
+            mTouchboost.setChecked(FileUtils.getFileValueAsBoolean(MSM_TOUCHBOOST_PATH, true));
+            mTouchboost.setOnPreferenceChangeListener(this);
+        } else {
+            getPreferenceScreen().removePreference(findPreference(PREF_MSM_TOUCHBOOST));
+        }
+		
         boolean enhancerEnabled;
         try {
             enhancerEnabled = DiracService.sDiracUtils.isDiracEnabled();
@@ -127,6 +139,10 @@ public class DeviceSettings extends PreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object value) {
         final String key = preference.getKey();
         switch (key) {
+
+            case PREF_MSM_TOUCHBOOST:
+                FileUtils.setValue(MSM_TOUCHBOOST_PATH, (boolean) value);
+                break;
 
             case PREF_ENABLE_DIRAC:
                 try {

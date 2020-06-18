@@ -19,6 +19,9 @@
 # Touchfeature
 /dev/xiaomi-touch                                                    u:object_r:touchfeature_device:s0
 
+# Touchboost
+/sys/module/msm_performance/parameters/touchboost		        u:object_r:sysfs_touchboost:s0
+
 # Infrared
 /dev/ir_spi u:object_r:ir_device:s0
 
