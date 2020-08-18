@@ -126,6 +126,10 @@ service vendor.bluetooth-1-0-qti /vendor/bin/hw/android.hardware.bluetooth@1.0-s
     override
 
 on property:ro.persistent_properties.ready=true
+    # Report max frequency to unity tasks
+    write /proc/sys/kernel/sched_lib_name "UnityMain,libunity.so"
+    write /proc/sys/kernel/sched_lib_mask_force 255
+
     # Setup default schedTune value for foreground/top-app
     write /dev/stune/foreground/schedtune.prefer_idle 1
     write /dev/stune/top-app/schedtune.boost 1
