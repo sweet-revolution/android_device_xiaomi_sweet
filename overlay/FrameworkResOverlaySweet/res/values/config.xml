@@ -488,4 +488,7 @@
 	
 	<!-- Indicates whether device has a power button fingerprint sensor. -->
     <bool name="config_is_powerbutton_fps" translatable="false" >true</bool>
+
+    <!-- Whether device has smaller dot/u/u notch -->
+    <bool name="config_haveDotNotch">true</bool>
 </resources>
