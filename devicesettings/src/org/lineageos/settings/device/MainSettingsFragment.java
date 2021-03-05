@@ -24,6 +24,7 @@ import androidx.preference.PreferenceFragment;
 import androidx.preference.Preference;
 import androidx.preference.ListPreference;
 import androidx.preference.SwitchPreference;
+import org.lineageos.settings.device.speaker.ClearSpeakerActivity;
 
 import org.lineageos.settings.device.Constants;
 import org.lineageos.settings.device.R;
@@ -34,6 +35,8 @@ public class MainSettingsFragment extends PreferenceFragment {
     private Preference mPrefRefreshRateInfo;
     private ListPreference mPrefRefreshRateConfig;
     private SwitchPreference mPrefDcDimming;
+	private static final String PREF_CLEAR_SPEAKER = "clear_speaker_settings";
+    private Preference mClearSpeakerPref;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -50,6 +53,13 @@ public class MainSettingsFragment extends PreferenceFragment {
         mPrefDcDimming = (SwitchPreference) findPreference(Constants.KEY_DC_DIMMING);
         mPrefDcDimming.setOnPreferenceChangeListener(PrefListener);
         updateSummary();
+
+        mClearSpeakerPref = (Preference) findPreference(PREF_CLEAR_SPEAKER);
+        mClearSpeakerPref.setOnPreferenceClickListener(preference -> {
+            Intent intent = new Intent(getActivity().getApplicationContext(), ClearSpeakerActivity.class);
+            startActivity(intent);
+            return true;
+        });
     }
 
     private Preference.OnPreferenceChangeListener PrefListener =
