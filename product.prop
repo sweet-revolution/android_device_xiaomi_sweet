@@ -7,3 +7,4 @@ ro.control_privapp_permissions=log
 
 # IORap
 persist.device_config.runtime_native_boot.iorap_readahead_enable=true
+ro.iorapd.enable=true
