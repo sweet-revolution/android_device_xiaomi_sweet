@@ -30,6 +30,13 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.1-impl \
     android.hardware.soundtrigger@2.2-impl
 
+# Device Settings
+PRODUCT_PACKAGES += \
+    XiaomiParts
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/parts/privapp-permissions-parts.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-parts.xml
+
 PRODUCT_PACKAGES += \
     libOmxAacEnc \
     libOmxAmrEnc \
