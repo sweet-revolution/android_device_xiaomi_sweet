@@ -64,3 +64,6 @@ dalvik.vm.image-dex2oat-threads=8
 
 # Time
 persist.vendor.delta_time.enable=true
+
+# Priv-app permission
+ro.control_privapp_permissions=log
