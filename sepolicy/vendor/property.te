@@ -3,3 +3,6 @@ vendor_internal_prop(vendor_power_prop)
 
 # Dirac
 type dirac_prop, property_type;
+
+# Panel color
+vendor_internal_prop(vendor_panel_prop)
