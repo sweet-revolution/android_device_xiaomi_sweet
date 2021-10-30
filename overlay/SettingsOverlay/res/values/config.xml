@@ -38,4 +38,11 @@
   
     <!-- Whether to show min/max refresh rate in display settings --> 
     <bool name="config_show_refresh_rate_controls">true</bool>
+
+  <!-- Whether this device is supporting the microphone toggle -->
+  <bool name="config_supportsMicToggle">true</bool>
+
+  <!-- Whether this device is supporting the camera toggle -->
+  <bool name="config_supportsCamToggle">true</bool>
+
 </resources>
