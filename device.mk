@@ -231,23 +231,14 @@ PRODUCT_PACKAGES += \
     CutoutRingServiceSweet
 
 # Display
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.4-service \
-    android.hardware.graphics.mapper@3.0-impl-qti-display \
-    android.hardware.graphics.mapper@4.0-impl-qti-display \
-    vendor.qti.hardware.display.allocator-service \
-    android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service \
-    gralloc.sm6150 \
-    hwcomposer.sm6150 \
-    memtrack.sm6150 \
-    vendor.qti.hardware.display.mapper@2.0.vendor
-
-PRODUCT_PACKAGES += \
-    libsdmcore-shim
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/display/qdcm_calib_data_xiaomi_k6_38_0c_0a_fhd_dsc_video_dsi_panel.xml:$(TARGET_COPY_OUT_VENDOR)/etc/qdcm_calib_data_xiaomi_k6_38_0c_0a_fhd_dsc_video_dsi_panel.xml
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.sf.color_mode=0 \
+    persist.sys.sf.native_mode=2 \
+    ro.vendor.display.sensortype=2 \
+    vendor.display.enable_async_powermode=0 \
+    vendor.display.qdcm.mode_combine=1 \
+    vendor.display.use_layer_ext=0 \
+    vendor.display.use_smooth_motion=0
 
 # Google Photos
 PRODUCT_COPY_FILES += \
@@ -323,6 +314,7 @@ PRODUCT_PACKAGES += \
 TARGET_COMMON_QTI_COMPONENTS := \
     adreno \
     av \
+    display \
     media-legacy \
     perf
 
