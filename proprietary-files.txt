@@ -188,7 +188,6 @@ vendor/bin/lowi-server
 vendor/bin/mishow.sh
 vendor/bin/mi_thermald
 vendor/bin/mlid
-vendor/bin/msm_irqbalance
 vendor/bin/mtd@1.2
 vendor/bin/netmgrd
 vendor/bin/nqnfcinfo
@@ -476,7 +475,6 @@ vendor/etc/mixer_paths_qrd.xml
 vendor/etc/mixer_paths_tavil.xml
 vendor/etc/mixer_paths_wcd9375qrd.xml
 vendor/etc/mixer_paths_wcd9375.xml
-vendor/etc/msm_irqbalance.conf
 vendor/etc/noise_table_64_64.rgb
 vendor/etc/permissions/android.software.vulkan.deqp.level.xml
 vendor/etc/permissions/com.fingerprints.extension.xml
@@ -959,7 +957,6 @@ vendor/lib64/liblowi_wifihal.so
 vendor/lib64/liblqe.so
 vendor/lib64/libmdmdetect.so
 vendor/lib64/libmdsprpc.so
-vendor/lib64/libmeters-ns.so
 vendor/lib64/libmfido.so
 vendor/lib64/libmiai_portraitsupernight.so
 vendor/lib64/libmialgo_fs.so
@@ -1043,7 +1040,6 @@ vendor/lib64/libqseed3.so
 vendor/lib64/libqsocket.so
 vendor/lib64/libQTEEConnector_vendor.so
 vendor/lib64/libqtigef.so
-vendor/lib64/libqti-iopd.so
 vendor/lib64/libqtikeymaster4.so
 vendor/lib64/libqti-utils.so
 vendor/lib64/libqtivibratoreffect.so
@@ -1621,7 +1617,6 @@ vendor/lib/libqseed3.so
 vendor/lib/libqsocket.so
 vendor/lib/libQTEEConnector_vendor.so
 vendor/lib/libqtigef.so
-vendor/lib/libqti-iopd.so
 vendor/lib/libqtikeymaster4.so
 vendor/lib/libqti-utils.so
 vendor/lib/librcc.so
