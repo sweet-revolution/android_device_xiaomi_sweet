@@ -7,7 +7,7 @@ $(call inherit-product, device/xiaomi/sweet/device.mk)
 
 # Inherit common Cherish configurations
 $(call inherit-product, vendor/cherish/config/common_full_phone.mk)
-CHERISH_BUILD_TYPE := OFFICIAL
+CHERISH_BUILD_TYPE := InnOvaTioN
 TARGET_BOOT_ANIMATION_RES := 1080
 IS_PHONE := true
 WITH_GMS := true
@@ -24,7 +24,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 # Maintainer
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.cherish.maintainer=BayerischeMotorenWerke
+    ro.cherish.maintainer=bezke
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="dipper-user 8.1.0 OPM1.171019.011 V9.5.5.0.OEAMIFA release-keys"
