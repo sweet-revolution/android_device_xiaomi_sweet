@@ -120,7 +120,6 @@ PRODUCT_PACKAGES += \
     SettingsProviderOverlaySweet \
     SystemUIOverlaySweet \
     TelephonyOverlaySweet \
-    NoCutoutOverlay \
     NotchBarKiller
 
 # Permissions
