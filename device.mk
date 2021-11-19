@@ -113,10 +113,6 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES += \
     GoogleCameraGo
-
-# Doze
-PRODUCT_PACKAGES += \
-    XiaomiDoze
 	
 # Overlays
 PRODUCT_PACKAGES += \
