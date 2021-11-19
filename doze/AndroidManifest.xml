@@ -26,12 +26,15 @@
 
     <protected-broadcast android:name="com.android.systemui.doze.pulse" />
 
+    <uses-sdk
+        android:minSdkVersion="24"
+        android:targetSdkVersion="24"/>
+
     <application
         android:label="@string/device_settings_app_name"
         android:persistent="true">
 
-        <receiver android:name=".BootCompletedReceiver"
-                  android:exported="false">
+        <receiver android:name=".BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -39,20 +42,17 @@
         </receiver>
 
         <service android:name=".DozeService"
-                 android:permission="XiaomiDozeService"
-                 android:exported="true">
+                 android:permission="XiaomiDozeService">
         </service>
 
         <activity
             android:name=".DozeSettingsActivity"
-            android:exported="false"
             android:label="@string/ambient_display_title"
-            android:theme="@style/Theme.SubSettingsBase">
+            android:theme="@style/Theme.Main">
         </activity>
         
         <service
             android:name="org.lineageos.settings.doze.DozeTileService"
-            android:exported="false"
             android:icon="@drawable/ic_doze"
             android:label="@string/ambient_display_gestures_title"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
