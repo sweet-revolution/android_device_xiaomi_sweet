@@ -13,4 +13,3 @@ type sysfs_kgsl, sysfs_type, fs_type;
 # XiaomiParts
 type vibrator_dev, sysfs_type, fs_type;
 type kcal_dev, sysfs_type, fs_type;
-type sysfs_touchboost, sysfs_type, fs_type;
