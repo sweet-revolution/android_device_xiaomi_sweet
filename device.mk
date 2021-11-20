@@ -113,6 +113,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     GoogleCameraGo
 
+# DeviceSettings
+PRODUCT_PACKAGES += \
+    XiaomiParts
+
 # Overlays
 PRODUCT_PACKAGES += \
     CarrierConfigOverlaySweet \
