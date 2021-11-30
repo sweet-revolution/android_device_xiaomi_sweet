@@ -154,6 +154,7 @@ PRODUCT_PACKAGES += \
     SettingsOverlay \
     SettingsLibOverlaySweet \
     SettingsProviderOverlaySweet \
+    SimpleDeviceConfigOverlaySweet \
     SystemUIOverlaySweet \
     TelephonyOverlaySweet \
     NotchBarKiller
