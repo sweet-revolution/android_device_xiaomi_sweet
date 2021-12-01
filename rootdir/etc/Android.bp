@@ -25,3 +25,10 @@ prebuilt_etc {
     sub_dir: "init/hw",
     soc_specific: true
 }
+
+prebuilt_etc {
+    name: "init.xiaomi_parts.rc",
+    src: "init.xiaomi_parts.rc",
+    sub_dir: "init/hw",
+    soc_specific: true
+}

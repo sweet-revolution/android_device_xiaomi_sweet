@@ -74,7 +74,8 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.sweet.rc \
-    init.target.rc
+    init.target.rc \
+    init.xiaomi_parts.rc
 
 PRODUCT_PACKAGES += \
     init.class_main.sh \
@@ -288,6 +289,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.3-service.clearkey \
     android.hardware.drm@1.3.vendor
+
+# Doze
+PRODUCT_PACKAGES += \
+    XiaomiDoze
+
+# Parts
+PRODUCT_PACKAGES += \
+    XiaomiParts
 
 # Perf
 PRODUCT_PACKAGES += \
