@@ -16,20 +16,15 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Label for feature switch [CHAR LIMIT=30] -->
-    <string name="switch_bar_on">On</string>
-
-    <!-- Label for feature switch [CHAR LIMIT=30] -->
-    <string name="switch_bar_off">Off</string>
-
     <!-- Device specific settings -->
     <string name="device_settings_app_name">Advanced settings</string>
 
     <!-- Ambient Display -->
     <string name="ambient_display_title">Ambient display</string>
+    <string name="ambient_enable">Use ambient display</string>
 
-    <!-- Tilt sensor -->
-    <string name="tilt_sensor_title">Tilt sensor</string>
+    <!-- Pickup sensor -->
+    <string name="pickup_sensor_title">Pickup sensor</string>
 
     <!-- Proximity sensor -->
     <string name="proximity_sensor_title">Proximity sensor</string>
@@ -50,10 +45,17 @@
     <string name="proximity_wake_title">Proximity wake</string>
     <string name="proximity_wake_enable_summary">Wake device on hand wave</string>
 
+    <!-- Wake on gesture -->
+    <string name="wake_on_gesture_title">Wake up on gestures</string>
+    <string name="wake_on_gesture_summary">Wake the device instead of pulsing notifications on gesture events</string>
+
     <!-- Dialog texts -->
     <string name="dialog_ok">OK</string>
 
     <!-- Help texts -->
     <string name="doze_settings_help_title">Help</string>
-    <string name="doze_settings_help_text">These features use sensor events to launch a doze notification pulse. The chosen sensor is only enabled when the device receives a notification, this helps to reduce battery usage. There is also an option to enable the chosen sensor as soon as the screen turns off, this will cause higher battery usage.</string>
+    <string name="doze_settings_help_text">These features use sensor events to launch a doze notification pulse. The chosen sensor is only enabled when the device receives a notification, this helps to reduce battery usage. There is also an option to enable the chosen sensor as soon as the screen turns off, this will cause higher battery usage.\n\nNOTE: The proximity sensor gestures may break deep sleep completely. Use them with caution.</string>
+    
+    <!-- Doze Tile Service -->
+    <string name="ambient_display_gestures_title">Ambient display gestures</string>
 </resources>

@@ -12,6 +12,16 @@
 /firmware(/.*)?          u:object_r:firmware_file:s0
 /persist(/.*)?           u:object_r:persist_file:s0
 
+# Haptic
+/sys/module/qti_haptics/parameters/level                       u:object_r:sysfs_vibrator:s0
+
+# KCAL
+/sys/devices/platform/kcal_ctrl.0(/.*)?                                 u:object_r:kcal_dev:s0
+/sys/bus/platform/drivers/kcal_ctrl(/.*)?                               u:object_r:kcal_dev:s0
+
+# FPS Info
+/sys/devices/virtual/graphics/fb0/measured_fps                                                                                      u:object_r:sysfs_fps:s0
+
 # Touchfeature
 /dev/xiaomi-touch                                                    u:object_r:touchfeature_device:s0
 

@@ -1,3 +1,19 @@
 allow system_app sysfs_kgsl:file r_file_perms;
 allow system_app sysfs_zram:dir r_dir_perms;
 allow system_app sysfs_zram:file r_file_perms;
+allow system_app sysfs_leds:dir search;
+allow system_app vibrator_dev:dir search;
+allow system_app vibrator_dev:file rw_file_perms;
+allow system_app kcal_dev:file rw_file_perms;
+allow system_app kcal_dev:dir search;
+
+allow system_app sysfs_vibrator:dir search;
+allow system_app sysfs_vibrator:file rw_file_perms;
+
+allow system_app sysfs_thermal:file rw_file_perms;
+
+# FPS Info
+allow system_app sysfs_fps:dir search;
+allow system_app sysfs_fps:file rw_file_perms;
+allow system_app sysfs_graphics:dir search;
+allow system_app sysfs_graphics:file r_file_perms;
