@@ -114,10 +114,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     GoogleCameraGo
 
+# Parts
+PRODUCT_PACKAGES += \
+    XiaomiParts
+
 # Doze
 PRODUCT_PACKAGES += \
     XiaomiDoze
-	
+
 # Overlays
 PRODUCT_PACKAGES += \
     CarrierConfigOverlaySweet \
