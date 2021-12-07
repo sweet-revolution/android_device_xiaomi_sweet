@@ -12,8 +12,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="device_settings_title">Impostazioni specifiche dispositivo</string>
-    <string name="device_settings_summary">Personalizza gli aspetti specifici del dispositivo</string>
+    <string name="device_settings_title">Xiaomi Parts</string>
+    <string name="device_settings_summary">Poweres by Xiaomi</string>
 
     <string name="refresh_rate_title">Frequenza di aggiornamento</string>
     <string name="refresh_rate_summary">Modifica la frequenza di aggiornamento del display del tuo telefono per una migliore esperienza</string>
